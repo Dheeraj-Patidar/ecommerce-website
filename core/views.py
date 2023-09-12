@@ -727,7 +727,19 @@ class CouponUpdateView(UpdateView):
         response = super().form_valid(form)
         return JsonResponse({'success': 'Coupon updated successfully'})
     
-   
+    def get_initial(self):
+        # Get the existing Coupon instance
+        coupon = self.get_object()
+        
+        # Create a dictionary with field names and their initial values
+        initial_data = {
+            'coupon_code': coupon.coupon_code,
+            'discount_price': coupon.discount_price,
+            'minimum_amount': coupon.minimum_amount,
+            'is_expired': coupon.is_expired,
+           
+        }
+        return initial_data
     
 
 
