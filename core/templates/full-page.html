@@ -1,0 +1,75 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{%block body%}
+{%load cart%}
+<div class="upper-containner">
+  <div class="home-bar">
+    <a href="">Clothing /</a>
+    <h4>Men T-Shirts</h4>
+  </div>
+</div>
+{% for prod in product %}
+<div class="full-page">
+  <div class="left-image">
+    <img src="/core/media/{{prod.img}}" alt="">
+
+  </div>
+  <div class="right-description">
+
+    <div class="name">
+      <h2>{{prod.name}}</h2>
+      <h3>{{prod.desc}}</h3>
+    </div>
+    <h2>
+      <p>&#x20B9 {{prod.discounted_price}} <span>MRP</span> <strike><span> &#x20B9 {{prod.price}}</span> </strike> </p>
+    </h2>
+
+    <div class="alltex">
+      <h5>Inclusive of all taxes </h5>
+    </div>
+    <h4 class="select">SELECT SIZE</h4>
+    <div class="right-description-size">
+      {%for s in size%}
+      <input type="radio" id="{{s.id}}" name="size" value="{{s.id}}">
+      <label for="{{s.id}}">{{s.size}}</label>
+      {%endfor%}
+    </div>
+    <div>
+      {%if quantity < 1 %} <h3 style="color: red; margin-top: 12px; font-weight: bold;">OUT OF STOCK</h3>
+        {%endif%}
+    </div>
+    <div class="right-description-btn">
+      <form action="" method="POST">
+        {%csrf_token%}
+        <div>
+
+          <input hidden type="text" name="product" value="{{prod.id}}">
+          {%if quantity < 1 %} <button type="submit" disabled>ADD TO BAG</button>
+
+            {% elif not prod|is_in_cart:request.session.cart %}
+            <button type="submit">ADD TO BAG</button>
+
+            {%else%}
+            <button type="submit"> <a style="color:white;
+             text-decoration: none;" href="{%url 'cart' %}">ADD TO BAG</a></button>
+
+            {%endif%}
+            <button type="submit">WISHLIST</button>
+        </div>
+      </form>
+
+    </div>
+    {%endfor%}
+
+    <div class="delivery-option">
+      <h3>DELIVERY OPTIONS</h3>
+      <input type="text" placeholder="Enter Pincode">
+      <button type="button">Check</button>
+      <button type="reset">Change</button>
+    </div>
+  </div>
+</div>
+
+
+{%endblock%}

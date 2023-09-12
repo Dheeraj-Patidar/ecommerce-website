@@ -1,0 +1,175 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{%block body%}
+
+<div class="mens-container">
+    <div class="upper-containner">
+        <div class="home-bar">
+            <a href=""> Clothing /</a>
+            <h4>Men T-Shirts</h4>
+        </div>
+        <div class="filter">
+            <h4>Filter</h4>
+        </div>
+    </div>
+
+    <div class="large-container" >
+        <form action="" id="filterForm"  method="get">
+        <div class="size-container">
+            <h3>Size:</h3>
+            
+                
+                    {% for size in sizes %}
+                   
+                     <input type="checkbox" class="filter-checkbox" name="size" value="{{size.id}}" id="size_checkbox{{size.id}}" >
+                        <label for="size_checkbox{{size.id}}"><a>{{size.size}}</a></label>
+                    
+                    {%endfor%}
+                
+        </div>
+
+
+        
+        <div class="left-container" >
+            <div class="inner-items">
+               
+                <h4>CATEGORIES</h4>
+                <div class="inner-items2">
+                    <div>
+                        <input type="checkbox">Tshirts
+                    </div>
+                    <div>
+                        <input type="checkbox">Lounge tshirts
+                    </div>
+                </div>
+            </div>
+            <div class="inner-items">
+                <h4>BRANDS</h4>
+                <div class="inner-items2">
+                    {% for b in brand %}
+                    <div >
+                     <input type="checkbox" class="filter-checkbox"  name="brand"  id="brand_checkbox{{b.id}}" value="{{b.id}}" >
+                      <label for="brand_checkbox{{b.id}}">{{b.name}}
+                      </label>
+                    </div>
+                    {%endfor%}
+                
+                </div> 
+            </div>
+            <div class="inner-items">
+                <h4>PRICE</h4>
+                <div class="inner-items2">
+                    {% for price in price_filter %}
+                    <div>
+                        <input type="checkbox" class="filter-checkbox" id="price_checkbox{{price.id}}" value="{{price.id}}" name="price">
+                        <label for="price_checkbox{{price.id}}">{{price.price}}</label>
+                    
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="inner-items">
+                <h4>COLOR</h4>
+                <div class="inner-items2">
+                    {%for color in color%}
+                    <div>
+                        <input type="checkbox" class="filter-checkbox" id="color_checkbox{{color.id}}" value="{{color.id}}" name="color">
+                        <label for="color_checkbox{{color.id}}">{{color.color}}</label>
+                    
+                    </div>
+                   {%endfor%}
+                </div>
+            </div>
+        </form>
+        </div>
+        <div class="right-container"  >
+            <div id="filteredResults">
+                
+<div>
+    <div class="box "  >
+        {% for i in page.object_list%}
+        <div>
+            <a href="/core/fullpage/{{i.id}}"><img src="/core/media/{{i.img}}" alt=""></a>
+            <div class="description">
+                <h4><a href="/core/fullpage/{{i.id}}">{{i.brand}}</a></h4>
+                <span><a href="/core/fullpage/{{i.id}}">{{i.desc}}</a></span>
+                
+                <h5 style="margin-top: 7px;"><a href="/core/fullpage/{{i.id}}">&#x20B9 {{i.discounted_price}}  <strike><span>&#x20B9 {{i.price}} </span></strike> <span style="color: rgb(233, 167, 178);">({{i.discount}}%OFF)</span> </a></h5>
+               
+            </div>
+        </div>
+
+        {% if forloop.counter|divisibleby:5 and forloop.counter > 0 and not forloop.last %}
+    </div>
+
+    <div class="box " >
+        <div>
+
+
+        </div>
+        {%endif%}
+
+        {%endfor%}
+
+
+    </div>
+</div>
+
+
+
+
+<div class="paginator">
+    <div class="row my-2">
+
+        <div class="col-md-4 offset-md-5">
+            <p class="pageno">Page:{{page.number}} / {{page.paginator.num_pages}}</p>
+            <nav aria-label="...">
+                <ul class="pagination">
+
+                    <li class="page-item ">
+                        {%if page.has_previous%}
+                        <a class="page-link"
+                            href="{%url 'product'%}?catagories={{catid}}&page={{page.previous_page_number}}">Previous</a>
+                        {%endif%}
+                    </li>
+                    {%for num_page in page.paginator.page_range%}
+
+                    {% if page.number == num_page%}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="{%url 'product'%}?catagories={{catid}}&page={{num_page}}">{{ num_page}}</a>
+                    </li>
+                    {%else%}
+                    <li class="page-item " aria-current="page">
+                        <a class="page-link"
+                            href="{%url 'product'%}?catagories={{catid}}&page={{num_page}}">{{num_page}}</a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+
+                    <li class="page-item">
+                        {%if page.has_next%}
+                        <a class="page-link"
+                            href="{%url 'product'%}?catagories={{catid}}&page={{page.next_page_number}}">Next</a>
+
+                        {%endif%}
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+            </div>
+         
+
+
+        </div>
+    
+    </div>
+</div>
+
+</div>
+
+
+{%endblock%}

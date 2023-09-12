@@ -1,0 +1,110 @@
+{%extends 'basic.html'%}
+{%load static%}
+{%block body%}
+{% load cart %}
+
+<div class="modal fade" id="ordermodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="deleteordermodal" style="margin-top: 100px;">
+            <div class="modal-content" style="width: 1000px; position: relative; right: 250px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ordermodallabel">Orders</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="items-modal-body">
+                    <div class="container">
+
+                        <div class="border rounded p-4 m-4">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Sno.</th>
+                                        <th>Image</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+
+                    </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    {%if order|length < 1 %} <div class="container ">
+        <h1 style="margin-top:260px; margin-left: 450px; ">No Orders Found</h1>
+</div>
+
+{% else %}
+
+<div class="container">
+
+    <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your Orders</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order no.</th>
+                    <th>Date</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{order.date}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.total}}</td>
+
+                    {% if order.status %}
+                    <td class="badge badge-success">Complete</td>
+                    {%else%}
+                    <td class="badge badge-warning">Pending</td>
+                    {%endif%}
+                    <td>
+                        <div>
+                            <button class="btn btn-primary btn-view-order-details" data-order-id="{{ order.id }}">View
+                            </button>
+                        </div>
+                    </td>
+
+                </tr>
+                {%endfor%}
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+</div>
+{%endif%}
+</div>
+{% endblock %}

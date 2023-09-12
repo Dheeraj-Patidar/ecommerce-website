@@ -1,0 +1,194 @@
+{%extends 'basic.html'%}
+{%block titel%} admin.com {%endblock%}
+{%block body%}
+<div class="container my-5">
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message : </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+
+
+
+
+  <!-- Modal -->
+  {%for i in shopdetail%}
+  <div class="modal fade" id="modal{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="deleteshopmodal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this shop?
+          </div>
+
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+            <button type="button" class="btn btn-danger">
+              {%for i in shopdetail%}
+              <a href="/core/deleteshop/{{i.id}}" style="color: white; text-decoration: none;">{%endfor%} Delete</a>
+
+            </button> -->
+
+            <form method="post" action="{% url 'deleteshop' i.id %}">
+              {% csrf_token %}
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
+           </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endfor%}
+
+
+
+
+
+
+
+  <!-- Modal ADD SHOP -->
+  <div class="modal fade" id="addshopmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="deleteshopmodal" style="margin-top: 100px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addpshopmodallabel">Create New Shops</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <form action="{% url 'admin'%}" method="post">
+              {%csrf_token%}
+{{form.as_p}}
+
+              <!-- <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username}}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.repassword.id_for_label }}">Re-Password</label>
+                {{ form.repassword }}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.shopname.id_for_label }}">Shopname</label>
+                {{ form.shopname }}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.address.id_for_label }}">Address</label>
+                {{ form.address }}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.contactnum.id_for_label }}">Contact Number</label>
+                {{ form.contact_number }}
+              </div> -->
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+                <button type="submit" class="btn btn-success">Create Shop</button>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- update shop  -->
+
+
+  <div class="modal fade" id="updateshopmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="updateshopmodal" style="margin-top: 100px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateshopmodallable">Update Shop</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          
+           {%include 'updateshop.html'%}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid">
+
+    <table class="table" border="2">
+      <div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addshopmodal">Add Shops</button>
+      </div>
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Shopname</th>
+          <th scope="col">Role</th>
+          <th scope="col">Action1</th>
+          <th scope="col">Action2</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        {%for i in shopdetail%}
+        <tr>
+          <td>{{i.username}}</td>
+          <td>{{i.email}}</td>
+          <td id="shopname_">{{i.shopname}}</td>
+          <td>{{i.role}}</td>
+          <td><button class="btn btn-primary btn-update-shop"  data-shop-id="{{i.id}}">Update</button></td>
+       
+          <!-- <td><button class="btn btn-primary"><a href="/core/updateshop/{{i.id}}"
+                style="color: white; text-decoration: none;">Update</a></button></td> -->
+          <td><button class="btn btn-danger" data-toggle="modal" data-target="#modal{{i.id}}">Delete</button></td>
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{%endblock%}

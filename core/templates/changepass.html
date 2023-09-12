@@ -1,0 +1,44 @@
+{%extends 'basic.html' %}
+{% load static %}
+{%block titel%} reset-password.com {%endblock%}
+
+{%block body%}
+<div class="changepass-big">
+    <div class="container my-5">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+
+
+        <div class="changepass-form">
+            <form action="/core/changepass/" method="post">
+                {%csrf_token%}
+                <h3>Change Your Password</h3>
+
+                <div class="form-group">
+                    <label for="{{ form.oldpass.id_for_label }}">Old Password</label>
+                    {{ form.oldpass}}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.newpass.id_for_label }}">New Password</label>
+                    {{ form.newpass }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.confirmpass.id_for_label }}">Confirm Password</label>
+                    {{ form.confirmpass }}
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

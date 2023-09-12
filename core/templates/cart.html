@@ -1,0 +1,124 @@
+{%extends 'basic.html'%}
+{%load static%}
+{%block body%}
+
+{% load cart %}
+
+<div class="container">
+
+    {% if request.session.cart|length < 1 %} <div class="container ">
+        <h1 style="margin-top:260px; margin-left: 450px; ">Your Cart Is Empty</h1>
+</div>
+
+{% else %}
+
+
+
+<div class="container">
+
+    <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your Cart</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Discount</th>
+                    <th>Total Price</th>
+                    <th>Qty</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 100px;" src="/core/media/{{product.img}}"></td>
+                    <td>{{product.name}}</td>
+                    <td>&#x20B9 {{product.discounted_price}} <strike>&#x20B9 {{product.price}}</strike></td>
+                    <td>{{product|cart_quantity:request.session.cart}}</td>
+                    <td> {{product.discount}}% OFF</td>
+                    <td>&#x20B9 {{product|price_total:request.session.cart}}</td>
+                    <td>
+                        <div class="card no-gutters " style="flex-direction: row; width: 150px;">
+                            <form action="{%url 'cart'%}" class="col-2  " method="post">
+                                {%csrf_token%}
+                                <input hidden type="text" name='product' value='{{product.id}}'>
+                                <input hidden type="text" name='remove' value='True'>
+                                <input type="submit" value=" - " class="col-2 btn btn-block btn-secondary ">
+                            </form>
+                            <div class="text-center col">{{product|cart_quantity:request.session.cart}} in card</div>
+
+                            <form action="{%url 'cart'%}" class="col-2  " method="post">
+                                {%csrf_token%}
+                                <input hidden type="text" name='product' value='{{product.id}}'>
+                                {%if product|cart_quantity:request.session.cart == product_qty%}
+                                <input type="submit" disabled value=" + " class="col-2 btn btn-block btn-secondary ">
+                                {%else%}
+                                <input type="submit" value=" + " class="col-2 btn btn-block btn-secondary ">
+
+                                {%endif%}
+                            </form>
+                        </div>
+
+                    </td>
+
+                </tr>
+                {%endfor%}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5"></th>
+                    <th colspan="">Total</th>
+                    <th>&#x20B9 {{products|total_cart_price:request.session.cart}}</th>
+
+
+                    <th>
+                        <form action="" method="post">
+                            {%csrf_token%}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+                            <input type="text" required value="{{coupon}}" name="coupon" placeholder="Have any coupon?">
+                            <button class="btn btn-outline-info" type="submit">Apply Coupon</button>
+                        </form>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="5"></th>
+                    <th>Discount On Product</th>
+                    <th> &#x20B9 {{coupon_discount}}</th>
+
+                </tr>
+                <tr>
+                    <th colspan="5"></th>
+                    <th>Total Discount</th>
+                    <th>- &#x20B9 {{coupon_total_discount}}</th>
+                </tr>
+                <tr>
+                    <th colspan="5"></th>
+                    <th>Total</th>
+                    <th>&#x20B9 {{ total_cart_price_after_discount }}</th>
+
+                </tr>
+            </tfoot>
+        </table>
+        <div class="m-3 p-3">
+            <a href="{%url 'checkout'%}" class="btn btn-outline-info  col-lg-3 float-right">Check out</a>
+        </div>
+
+    </div>
+
+</div>
+{%endif%}
+
+</div>
+{% endblock %}

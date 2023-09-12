@@ -1,0 +1,38 @@
+{%load static%}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sno.</th>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+            <th>Total</th>
+            <th>Status</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for orderitem in orderitem %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><img style="height: 100px;" src="/core/media/{{orderitem.product.img}}"></td>
+            <td>{{orderitem.product.name}}</td>
+            <td>&#x20B9 {{orderitem.price}}</td>
+            <td>{{orderitem.quantity}}</td>
+            <td>{{orderitem.discount}}</td>
+            <td>Rs {{orderitem.total}}</td>
+
+            <td>{{orderitem.status}}</td>
+
+
+        </tr>
+        {%endfor%}
+    </tbody>
+
+</table>

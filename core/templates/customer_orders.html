@@ -1,0 +1,97 @@
+{%extends 'basic.html'%}
+{%load static%}
+{%block body%}
+
+{% load cart %}
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="updateStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="margin-top: 100px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateStatusModalLabel">Update Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="status-modal-body">
+
+        <form action="/core/customer_order/" method="post" id="updateStatusForm">
+          {%csrf_token%}
+          <label for="status">Status</label>
+
+          <select name="status" id="status">
+            {%for status in status%}
+            <option value="{{status.id}} ">{{status.status}}</option>
+            {%endfor%}
+          </select>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary "> Update </button>
+          </div>
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container">
+
+  <div class="border rounded p-4 m-4">
+    <h2>Customer Orders</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sno.</th>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Date</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Customer name</th>
+          <th>Status</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer_order in customer_orders %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td><img style="height: 60px;" src="/core/media/{{customer_order.product.img}}"></td>
+          <td>{{customer_order.product.name}}</td>
+          <td>{{customer_order.date}}</td>
+          <td>&#x20B9 {{customer_order.price}}</td>
+          <td>{{customer_order.quantity}}</td>
+          <td>{{customer_order.discount}}</td>
+          <td>Rs {{customer_order.total}}</td>
+          <td>{{customer_order.user}}</td>
+          <td> <span id="status_">{{ customer_order.status }}</span>
+          </td>
+
+          <td><button type="button" class="btn btn-primary btn-update-status" value="{{customer_order.id}}">Update
+            </button></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+    </table>
+
+
+  </div>
+
+</div>
+{% endblock %}

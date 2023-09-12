@@ -1,0 +1,81 @@
+{%load static%}
+
+<div>
+    <div class="box ">
+        {% for i in filtered_data%}
+        <div>
+            <a href="/core/fullpage/{{i.id}}"><img src="/core/media/{{i.img}}" alt=""></a>
+            <div class="description">
+                <h4><a href="/core/fullpage/{{i.id}}">{{i.brand}}</a></h4>
+                <span><a href="/core/fullpage/{{i.id}}">{{i.desc}}</a></span>
+
+                <h5 style="margin-top: 7px;"><a href="/core/fullpage/{{i.id}}">&#x20B9 {{i.discounted_price}}
+                        <strike><span>&#x20B9 {{i.price}} </span></strike> <span
+                            style="color: rgb(233, 167, 178);">({{i.discount}}%OFF)</span> </a></h5>
+
+            </div>
+        </div>
+
+        {% if forloop.counter|divisibleby:5 and forloop.counter > 0 and not forloop.last %}
+    </div>
+
+    <div class="box ">
+        <div>
+
+
+        </div>
+        {%endif%}
+
+        {%endfor%}
+
+
+    </div>
+
+
+
+ <div class="paginator">
+    <div class="row my-2">
+
+        <div class="col-md-4 offset-md-5">
+            <p class="pageno">Page:{{page.number}} / {{page.paginator.num_pages}}</p>
+            <nav aria-label="...">
+                <ul class="pagination">
+
+                    <li class="page-item ">
+                        {%if page.has_previous%}
+                        <button class="page-link"
+                           id="prevPage" >Previous</button>
+                        {%endif%}
+                    </li>
+                    {%for num_page in page.paginator.page_range%}
+
+                    {% if page.number == num_page%}
+                    <li class="page-item active" aria-current="page">
+                        <button class="page-link pagenum"  data-page="{{ num_page }}">{{ num_page}}</button>
+                    </li>
+                    {%else%}
+                    <li class="page-item " aria-current="page">
+                        <button class="page-link pagenum"
+                        data-page="{{ num_page }}">{{num_page}}</button>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+
+                    <li class="page-item">
+                        {%if page.has_next%}
+                        <button class="page-link"
+                        id="nextPage">Next</button>
+
+                        {%endif%}
+                    </li>
+                </ul>
+
+            </nav>
+        </div> 
+    </div> 
+</div>
+
+
+
+
+</div>

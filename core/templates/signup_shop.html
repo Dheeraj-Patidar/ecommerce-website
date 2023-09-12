@@ -1,0 +1,63 @@
+{%extends 'basic.html'%}
+{% load static %}
+{%block titel%} Signup_shop.com {%endblock%}
+{%block body%}
+<div class="signupshop-big">
+
+  <div class="signupshop-form">
+    <div class="container my-5">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message : </strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      <form action="/core/signupshop/" method="post">
+        {%csrf_token%}
+        <h3>Signup-Shop</h3>
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}">Username</label>
+          {{ form.username}}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.email.id_for_label }}">Email</label>
+          {{ form.email }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}">Password</label>
+          {{ form.password }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.repassword.id_for_label }}">Re-Password</label>
+          {{ form.repassword }}
+        </div>
+
+
+        <div class="form-group">
+          <label for="{{ form.shopname.id_for_label }}">Shopname</label>
+          {{ form.shopname}}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.address.id_for_label }}">Address</label>
+          {{ form.address }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.contactnum.id_for_label }}">Contact Number</label>
+          {{ form.contactnum }}
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Signup</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}

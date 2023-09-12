@@ -1,0 +1,43 @@
+{%extends 'basic.html' %}
+{% load static %}
+{%block titel%} login.com {%endblock%}
+
+{%block body%}
+
+<div class="login-big">
+  <div class="login-form my-5 " style="border: 2px solid rgb(216, 205, 205);">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>Message : </strong> {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    <form action="/core/loginpage/" method="post">
+      {%csrf_token%}
+
+      
+      <div class="login-form">
+        <h3>Login</h3>
+
+        <div class="form-group">
+          <label for="{{ form.loginusername.id_for_label }}">Username</label>
+          {{ form.loginusername}}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.loginpassword.id_for_label }}">Password</label>
+          {{ form.loginpassword }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+
+        <div class="forget-button">
+          <a href="/core/reset_password/">Forget Password</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock%}

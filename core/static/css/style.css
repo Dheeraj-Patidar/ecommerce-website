@@ -1,0 +1,786 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+.navbar{
+    position:sticky;
+    top:0px;
+    background-color: white;
+    box-shadow: 1px -4px 39px -30px;
+    z-index: 9999;
+    
+}
+
+.nav-link{
+    margin-left: 10px;
+    color: rgb(88, 84, 84);
+    font-size: medium;
+    font-weight: bold;
+}
+.nav-link:hover{
+    color: rgb(68, 61, 61);
+}
+
+
+
+.container{
+    max-width: 1305px;
+}
+
+
+.left {
+    position: absolute;
+    left: 10px;
+    top: 16px;
+}
+
+.left img {
+    margin-left: 60px;
+    margin-top: 10px;
+    height: 30px;
+    width: 40px;
+}
+.left-side{
+    position: absolute;
+    left: 939px;
+    top: 7px;
+    width: 583px;
+}
+.mid {
+    display: flex;
+    position: absolute;
+    left: 133px;
+ top: 16px;
+ height: 50px;
+}
+
+.mid ul {
+    display: flex;
+    /* position: absolute;
+    left: 50px; */
+
+}
+
+.mid ul li {
+    list-style: none;
+    text-decoration: none;
+    height: 48px;
+   
+}
+.mid ul li:hover{
+    border-bottom: 4px solid rgb(248, 63, 7);    
+    
+}
+
+.mid ul li a {
+    color: rgb(88, 84, 84);
+    font-size: medium;
+    font-weight: bold;
+    margin: 18px;
+    text-decoration: none;
+}
+
+
+
+.activeuser{
+    width: 50px;
+    font-weight: bold;
+    color: black;
+}
+
+.search {
+    margin-left:550px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(250, 245, 245);
+    padding: 1px;
+    border-style: none;
+}
+
+.search img {
+    height: 15px;
+    width: 15px;
+    margin-left: 16px;
+    margin-top: 8px;
+
+}
+
+.search input {
+
+    background-color: rgb(250, 245, 245);
+    border-style: hidden;
+    width: 400px;
+    height: 35px;
+}
+
+.right {
+    position: absolute;
+    top: 13px;
+    right: 64px;
+    display: flex;
+  height: 60px;
+
+}
+
+.rside {
+height: 65px;
+    cursor: pointer;
+    margin: 8px;
+    line-height: 0px;
+}
+
+.rside img {
+    margin: 4px;
+    margin-left: 2px;
+    height: 17px;
+    width: 20px;
+}
+
+.base {
+    font-size: 12px;
+    margin-right: 3px;
+}
+.wishlist img{
+ margin-left: 9px;
+}
+.profile img{
+    padding-left: 4px;
+}
+.login-container{
+    position: absolute;
+    right: 50px;
+    width: 220px;
+    height: 290px;
+    padding-left: 26px;
+    padding-top: 12px;
+    background-color: white;
+    z-index: 1;
+    position: fixed;
+}
+.login-box-1{
+    line-height: 4px;
+    border-bottom: 1px solid rgb(234, 228, 228);
+}
+.login-btn{
+    cursor: pointer;
+    color: rgb(182, 39, 39);
+    font-weight: bold;
+    border: none;
+    border:2px solid rgb(220, 217, 217);
+    background-color:white;
+    padding: 6px;
+    margin-bottom: 12px;
+    width: 140px;
+}
+.login-btn:hover{
+    border-color: rgb(148, 61, 61);
+}
+.login-box-2{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgb(234, 228, 228);
+  padding-top:5px ;
+ padding-bottom: 7px;
+}
+.login-box-2 a{
+    color: rgb(59, 54, 54);;
+    margin: 3px;
+    text-decoration: none;  
+}
+.login-box-2 a:hover{
+    font-weight: bold;  
+}
+.login-box-3{
+    padding-top: 7px;
+    display: flex;
+    flex-direction: column;
+  }
+  .login-box-3 a{
+    color:rgb(59, 54, 54);
+    text-decoration: none;
+    margin: 3px;
+  }
+  .login-box-3 a:hover{
+   font-weight: bold;
+  }
+
+ 
+/*  
+ .slider{
+    height: 500px;
+    width: 1480px;
+     overflow: hidden;
+ }
+.slides{
+    display: flex;
+    margin: 20px;
+    height: 500px;
+    width: 500%;
+}
+.slides{
+    width: 20%;
+    transition: 2s;
+}
+.slides img{
+    height: 500px;
+    width: 1480px;
+    margin: 10px;
+}
+.radio{
+    position: absolute;
+    top: 550px;
+    left: 736px;
+}
+.radio input{
+    margin-right:25px ;
+}
+#radio1:checked ~ .first-img{
+    margin-left: 0;
+}
+#radio2:checked ~ .first-img{
+    margin-left: -33%;
+}
+#radio3:checked ~ .first-img{
+    margin-left: -66%;
+} */
+.offer{
+    margin: auto;
+    width: 1397px;
+}
+.offer img{
+    margin-top: 40px;
+    height: 465px;
+    width: 100%;
+    position: relative;
+    right:65px;
+
+}
+.items-container{
+    position: fixed;
+    background-color: white;
+    display: flex;
+    left: 165px;
+    top: 72px;
+    width: 700px;
+    height: 230px;
+    z-index: 1;
+}
+
+
+
+
+.boys-item-box h3{
+    font-size: medium;
+    color: rgb(182, 44, 44);
+}
+.boys-item-box{
+    display: flex;
+  flex-direction: column;
+
+}
+
+.boys-item-box a{
+    color: rgb(98, 89, 89);
+text-decoration: none;
+margin-top: 10px;
+margin-left:67px;
+width: 163px;
+}
+.boys-item-box a:hover{
+    font-weight: bold;
+    }
+
+
+
+.slogan{
+margin-top: 20px;
+}
+.slogan img{
+    margin: auto;
+    width: 145px;
+    height: 75px;
+
+}
+.slogan-box{
+    line-height: 15px;
+    margin: auto;
+    width: 500px;
+    text-align: center;
+}
+.slogan-box h2{
+    line-height: 0px;
+    color: rgb(164, 79, 79);
+    font-size: 32px;
+}
+.slogan-box h1{
+    color: rgb(166, 151, 64);
+    font-size: 30px;
+    margin-left: 165px;
+}
+.shop-now{
+    display: flex;
+    line-height: 0px;
+}
+.shop-now img{
+    line-height: 2px;
+   height: 40px;
+   width: 40px;
+   margin-right: 140px;
+}
+
+.kurta-container{
+    border: 1px solid rgb(224, 216, 216);
+    background-color:rgb(251, 249, 249);
+    height: 510px;
+    width: 76%;
+    
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    padding-left: 1px;
+}
+.kurta-box{
+    border: 1px solid rgb(224, 216, 216);
+    display: inline-flex;
+    height: 510px;
+    width: 319px; 
+}
+.kurta-box img{
+    height: 400px;
+    width: 311px;
+    margin: 5px;
+}
+.first{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+   position: absolute;
+   margin-top: 400px;
+   left: 390px;
+   line-height: 12px;
+}
+.second{
+    padding-top: 10px;
+    color:rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    left: 700px;
+    line-height: 12px;
+ }
+ .third{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    right: 400px;
+    line-height: 12px;
+ }
+ .fourth{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    left: 400px;
+    line-height: 12px;
+ }
+ .fifth{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    left: 700px;
+    line-height: 12px;
+ }
+ .sixth{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    right: 400px;
+    line-height: 12px;
+ }
+ .saree-heading{
+    margin: auto;
+    width: 250px;
+    font-size: 20px;
+    color: rgb(158, 119, 20);
+ }
+ .saree-container{
+    border: 1px solid rgb(224, 216, 216);
+    background-color:rgb(251, 249, 249);
+    height: 510px;
+    width: 101.4%;
+    margin: auto;
+    margin-bottom: 40px;
+    padding-left: 1px;
+ }
+ .saree-first{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    left: 217px;
+    line-height: 12px;
+ }
+ .saree-second{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    left: 543px;
+    line-height: 12px;
+ }
+ .saree-third{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    right: 557px;
+    line-height: 12px;
+ }
+ .saree-fourth{
+    padding-top: 10px;
+    color: rgb(59, 54, 54);
+    position: absolute;
+    margin-top: 400px;
+    right: 236px;
+    line-height: 12px;
+ }
+
+
+
+/* MENS T-SHIRT CONTAINER...... */
+
+
+
+.home-bar{
+    display: flex;
+    margin: 20px;font-size: 20px;
+    height: 20px;
+}
+.home-bar h4{
+    margin: 0px;
+    color: rgb(91, 86, 86);
+}
+.home-bar a{
+    padding-left: 5px;
+    text-decoration: none;
+    color: rgb(91, 86, 86);
+    cursor: pointer;
+}
+.filter h4{
+    font-size: 25px;
+    position: absolute;
+    top: 152px;
+    margin-left: 22px;
+    color: rgb(91, 86, 86);
+}
+
+.size-container{
+    display: flex;
+    position: absolute;
+    left:  248px;
+    top: 150px;
+   padding: 5px;
+}
+.size h3{
+    color: rgb(91, 86, 86);
+    margin: 0px;
+    margin-right:20px;
+    margin-top: -9px;
+}
+.size-container a{
+    color:rgb(91, 86, 86); ;
+    cursor: pointer;
+    margin-bottom: 6px;
+    margin-right: 105px;
+    text-decoration: none;
+}
+.large-container{
+    display: flex;
+    margin-top: 75px;
+
+}
+.left-container{
+    position: sticky;
+    top:0px;
+ color: rgb(91, 86, 86);
+    padding-left:20px;
+    border: 1px solid rgb(224, 216, 216);
+height: 756px;
+width: 300px;
+
+}
+.inner-items2{
+    color: rgb(155, 148, 148);
+ padding-bottom: 5px;
+}
+
+
+.inner-items2 div a{
+    color: rgb(155, 148, 148);
+    cursor: pointer;
+    text-decoration: none;
+
+}
+.inner-items2 div a:hover{
+    font-weight: bold;
+    color: rgb(155, 148, 148);
+    cursor: pointer;
+
+}
+.inner-items{
+    border-bottom: 1px solid rgb(224, 216, 216);
+    width: 90%;
+}
+.right-container{
+    border: 1px solid rgb(224, 216, 216);
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+}
+.box{
+    height: 370px;
+    display: flex;
+    width: 1000px;
+    /* text-align: center; */
+    line-height: 0px;
+}
+/* .box img{
+    height: 280px;
+    width: 220px;
+} */
+.box a{
+    text-decoration: none;
+    color: rgb(91, 86, 86);
+}
+.description{
+    padding-left: 13px;
+}
+.description h4{
+    margin-top: 3px;
+    font-size: large;
+    cursor: pointer;
+    color: rgb(91, 86, 86);
+}
+.description h3{
+    cursor: pointer;
+    margin-top: 6px;
+    color: rgb(91, 86, 86);
+}
+.description span{
+    cursor: pointer;
+    color: rgb(155, 148, 148);
+}
+.right-container img{
+    line-height: 1px;
+    margin: 12px;
+    /* padding: 20px; */
+    height: 280px;
+    width: 220px;
+
+}
+
+.col-md-4 p{
+    margin-left:76px;
+    margin-top: 20px;
+}
+
+
+
+
+/* FULL PAGE >>>>>>>>>>>>........................................ */
+.full-page{
+    display: flex;
+}
+.left-image{
+    margin-left: 35px;
+    height: 550px;
+    /* width: 27%; */
+    
+}
+.left-image img{
+    margin: 15px;
+    height: 550px; 
+    width: 500px;
+}
+.right-description {
+    line-height: 8px;
+    margin-top: 30px;
+    margin-left: 120px;
+    width: 60%;
+    height: 560px;
+}
+.name{
+    color: rgb(91, 86, 86);
+    border-bottom: 1px solid rgb(224, 216, 216);
+}
+.right-description h2{
+    color: rgb(59, 54, 54);
+}
+.alltex{
+    font-weight: bold;
+    Color:rgb(195, 41, 84);
+}
+.right-description span{
+    color:rgb(154 141 141);
+}
+.right-description-size input{
+   margin-top: -6px;
+}
+.right-description-size{
+    display: flex;
+/* margin-left: 50px; */
+margin-top: 22px; 
+}
+.right-description-size label{
+margin-right: 50px;
+}
+.select{
+    margin-top: 35px;
+}
+.right-description-size h4{
+    padding: 10px;
+    width: 50px;
+    margin: 9px 26px 0px 0px;
+    border: 2px solid  rgb(91, 86, 86);
+    border-radius: 100%; 
+}
+.right-description-size h4:hover{
+    cursor: pointer;
+    border: 2px solid red;
+}
+.right-description-btn{
+    margin-top: 20px;
+    border-bottom: 1px solid rgb(224, 216, 216);  
+}
+.right-description-btn button{
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: large;
+    margin-right: 40px;
+    height: 60px;
+    width: 220px;
+    background-color: rgb(175, 73, 107);
+    color: white;
+}
+.right-description-btn button:hover{
+cursor: pointer;
+background-color: rgb(200, 101, 118);
+}
+.delivery-option{
+margin-top: 30px;
+}
+.delivery-option input{
+    width: 160px;
+    height: 20px;
+    text-align: center;
+   
+}
+.delivery-option button{
+background-color: white;
+color: rgb(161, 23, 69);
+font-weight: bold;
+border: none;
+cursor: pointer;
+}
+
+
+
+/* FORM PAGE CSS>>>>>>>>>>>>>>>>>>................................. */
+
+
+.login-big{
+     background-color: rgb(255, 226, 219);
+    height:90vh;
+    width: 100%;
+    padding: 20px;
+}
+.login-form{
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    padding: 10px;
+    width: 370px;
+    height: 75%;
+    overflow: hidden;
+}
+.login-form input{
+    width: 90%;
+}
+.changepass-big{
+    
+    background-color: rgb(255, 226, 219);
+    height:90vh;
+    width: 100%;
+    padding: 20px;
+}
+.changepass-form{
+    background-color: white;
+    margin: auto;
+    padding: 17px;
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.forget-button{
+    margin-top: 10px;
+}
+.forget-button :hover{
+    text-decoration: none;
+    color:rgb(122, 87, 208);
+}
+.signupshop-big{
+    background-color: rgb(255, 226, 219);
+    height:100%;
+    width: 100%;
+    padding: 20px;
+}
+.signupshop-form{
+    background-color: white;
+    margin: auto;
+    padding: 17px;
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.signupshop-form input{
+    width: 100%;
+}
+
+
+.signupcustomer-big{
+    background-color: rgb(255, 226, 219);
+    height:90vh;
+    width: 100%;
+    padding: 20px;
+}
+.signupcustomer-form{
+    background-color: white;
+    margin: auto;
+    padding: 17px;
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.signupcustomer-form input{
+    width: 100%;
+}
+
+
+
+/* admin page */
+
+.deleteshopmodal{
+    margin-top: 150px;
+}
+
+
+/* Shop page Model */
+
+.addproductmodel{
+    margin-top: 100px;
+}

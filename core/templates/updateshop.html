@@ -1,0 +1,17 @@
+
+
+<form action="{% url 'admin'%}" method="post" id="updateShopForm">
+  {%csrf_token%}
+  
+  <div class="form-group">
+    <label for="{{ form.shopname.id_for_label }}">Shopname</label>
+    {{ form.shopname }}
+    <div class="error text-danger" id="shopname-error"></div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="submit" class="btn btn-success">Update</button>
+
+  </div>
+</form>
