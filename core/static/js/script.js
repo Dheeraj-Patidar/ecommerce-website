@@ -476,8 +476,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.initial_data) {
                     const initialData = response.initial_data;
-               
-                    console.log("Initial Data:", initialData); 
+            
                     for (const field in initialData) {
                         const fieldValue = initialData[field];
                         if (field === 'is_expired') {

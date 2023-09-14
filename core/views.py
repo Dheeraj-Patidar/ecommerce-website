@@ -397,7 +397,7 @@ class FullPageView(View):
         size = request.POST.get('size')
         product_id = kwargs['prod_id']
         cart = request.session.get('cart', {})
-
+       
         if cart.get(product_id):
             cart[product_id] += 1
         else:
@@ -423,6 +423,7 @@ def cart(request):
         remove = request.POST.get('remove')
         cart = request.session.get('cart')
         quantity = cart.get(productid)
+        
         if productid in cart:
             if remove:
                 if quantity <= 1:
@@ -503,6 +504,7 @@ def checkout(request):
             name = cleaned_data['name']
             address = cleaned_data['address']
             phone = cleaned_data['phone']
+           
             user = request.user
             cart = request.session.get('cart')
             products = Product.get_products_by_id(list(cart.keys()))
@@ -727,6 +729,7 @@ class CouponUpdateView(UpdateView):
         response = super().form_valid(form)
         return JsonResponse({'success': 'Coupon updated successfully'})
     
+
     def get_initial(self):
         # Get the existing Coupon instance
         coupon = self.get_object()

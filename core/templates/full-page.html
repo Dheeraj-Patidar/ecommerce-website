@@ -28,6 +28,7 @@
     <div class="alltex">
       <h5>Inclusive of all taxes </h5>
     </div>
+    <form action="" method="POST">
     <h4 class="select">SELECT SIZE</h4>
     <div class="right-description-size">
       {%for s in size%}
@@ -40,7 +41,7 @@
         {%endif%}
     </div>
     <div class="right-description-btn">
-      <form action="" method="POST">
+      <!-- <form action="" method="POST"> -->
         {%csrf_token%}
         <div>
 

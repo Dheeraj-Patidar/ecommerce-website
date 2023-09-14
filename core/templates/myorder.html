@@ -70,7 +70,7 @@
                     <th>Date</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>Status</th>
+                    <!-- <th>Status</th> -->
 
 
                 </tr>
@@ -83,11 +83,11 @@
                     <td>{{order.quantity}}</td>
                     <td>{{order.total}}</td>
 
-                    {% if order.status %}
+                    <!-- {% if order.status %}
                     <td class="badge badge-success">Complete</td>
                     {%else%}
                     <td class="badge badge-warning">Pending</td>
-                    {%endif%}
+                    {%endif%} -->
                     <td>
                         <div>
                             <button class="btn btn-primary btn-view-order-details" data-order-id="{{ order.id }}">View

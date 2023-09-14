@@ -481,20 +481,23 @@ margin-top: 20px;
     position: absolute;
     left:  248px;
     top: 150px;
-   padding: 5px;
-}
-.size h3{
+    padding: 5px;
     color: rgb(91, 86, 86);
+    align-items: center;
+}
+.size-container h3{
     margin: 0px;
     margin-right:20px;
-    margin-top: -9px;
+    margin-top: -12px;
 }
 .size-container a{
     color:rgb(91, 86, 86); ;
     cursor: pointer;
-    margin-bottom: 6px;
     margin-right: 105px;
-    text-decoration: none;
+}
+.size-container input{
+    margin-bottom: 4px;
+    padding-left: 3px;
 }
 .large-container{
     display: flex;
